@@ -35,9 +35,11 @@ class AuthForgotScreen extends StatelessWidget {
               height: 10,
             ),
             const Text(
-              '이메일 작성 후 인증번호가 전송됩니다',
+              '아이디로 사용 중인 이메일을 입력해주세요',
               style: TextStyle(
-                  fontSize: 13, color: font2Color, fontWeight: FontWeight.w300),
+                  fontSize: 13,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w300),
             ),
             const SizedBox(
               height: 30,
@@ -68,6 +70,28 @@ class AuthForgotScreen extends StatelessWidget {
               ),
             )
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: BottomAppBar(
+          shadowColor: Colors.white,
+          elevation: 0,
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.07,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30), color: fontColor),
+            child: const Center(
+              child: Text(
+                '확인',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:dating/Widget/meet/container_standard.dart';
+import 'package:dating/Widget/meet/mini_profile.dart';
 import 'package:dating/style/constant.dart';
 import 'package:dating/style/icon_shape.dart';
 import 'package:dating/style/text_styling.dart';
@@ -13,6 +14,8 @@ class MeetingDetail extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
@@ -120,6 +123,9 @@ class MeetingDetail extends StatelessWidget {
                 ],
               ),
             ),
+            const MiniProfile(),
+            const MiniProfile(),
+            const MiniProfile(),
           ],
         ),
       ),

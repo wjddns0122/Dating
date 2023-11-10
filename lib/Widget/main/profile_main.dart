@@ -116,8 +116,8 @@ class ProfileMain extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: MediaQuery.of(context).size.width * 0.035,
-              left: MediaQuery.of(context).size.height * 0.38,
+              bottom: MediaQuery.of(context).size.width * 0.024,
+              left: MediaQuery.of(context).size.height * 0.372,
               child: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(

@@ -1,6 +1,8 @@
 import 'package:dating/Widget/meet/meeting_container.dart';
+import 'package:dating/screen/meeting_create1.dart';
 import 'package:dating/style/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MeetingScreen extends StatelessWidget {
   const MeetingScreen({super.key});
@@ -82,7 +84,9 @@ class MeetingScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(const MeetingCreate1());
+        },
         backgroundColor: fontColor,
         child: const Icon(
           Icons.add,

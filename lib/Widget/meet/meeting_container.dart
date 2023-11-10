@@ -1,7 +1,5 @@
-import 'package:dating/screen/meeting_detail_screen.dart';
 import 'package:dating/style/icon_shape.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MeetingContainer extends StatelessWidget {
   const MeetingContainer({Key? key}) : super(key: key);
@@ -9,9 +7,9 @@ class MeetingContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.to(const MeetingDetail());
-      },
+      // onTap: () {
+      //   Get.to(MeetingDetail());
+      // },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.43,
         height: MediaQuery.of(context).size.height * 0.3,
@@ -30,7 +28,7 @@ class MeetingContainer extends StatelessWidget {
           child: Stack(
             children: [
               Image.network(
-                'https://www.fnnews.com/resource/media/image/2023/08/04/202308040936406369_l.jpg',
+                'https://i2.ruliweb.com/ori/21/12/14/17db8edb6652e4fd2.gif',
                 fit: BoxFit.cover,
                 width: MediaQuery.of(context).size.width * 0.43,
                 height: MediaQuery.of(context).size.height * 0.3,

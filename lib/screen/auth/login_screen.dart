@@ -143,7 +143,12 @@ class LoginScreen extends StatelessWidget {
               }),
               TextButton(
                 onPressed: () {
+<<<<<<< HEAD
+                  // 회원가입 페이지로 이동 -> 계정 찾기 페이지 하나 더 만들기
+                  Get.to(SignUpPage());
+=======
                   Get.to(const AuthForgotScreen());
+>>>>>>> develop
                 },
                 child: const Text(
                   '계정을 잃어버리셨나요?',
