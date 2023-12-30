@@ -1,9 +1,10 @@
+import 'package:dating/data/model/user.dart';
 import 'package:dating/style/icon_shape.dart';
-import 'package:dating/style/text_styling.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePositionedAge extends StatelessWidget {
-  const ProfilePositionedAge({super.key});
+  final User user;
+  const ProfilePositionedAge({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +17,23 @@ class ProfilePositionedAge extends StatelessWidget {
             onPressed: () {},
             icon: IconShape.iconPerson,
           ),
-          TextStyling.profileAge,
+          Text(
+            '${user.age}세',
+            style: const TextStyle(
+              fontSize: 13,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const SizedBox(width: 10),
-          TextStyling.profileHeight,
+          Text(
+            '${user.height}cm',
+            style: const TextStyle(
+              fontSize: 13,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          )
         ],
       ),
     );

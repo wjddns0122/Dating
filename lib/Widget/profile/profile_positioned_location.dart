@@ -1,9 +1,10 @@
+import 'package:dating/data/model/user.dart';
 import 'package:dating/style/icon_shape.dart';
-import 'package:dating/style/text_styling.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePositionedLocation extends StatelessWidget {
-  const ProfilePositionedLocation({super.key});
+  final User user;
+  const ProfilePositionedLocation({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,14 @@ class ProfilePositionedLocation extends StatelessWidget {
             onPressed: () {},
             icon: IconShape.iconLocationOn,
           ),
-          TextStyling.profileLocation,
+          Text(
+            '${user.residence}',
+            style: const TextStyle(
+              fontSize: 13,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          )
         ],
       ),
     );

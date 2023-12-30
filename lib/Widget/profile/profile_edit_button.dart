@@ -1,4 +1,4 @@
-import 'package:dating/screen/profile_edit_screen.dart';
+import 'package:dating/screen/profile/profile_edit_screen.dart';
 import 'package:dating/style/constant.dart';
 import 'package:dating/style/text_styling.dart';
 import 'package:flutter/material.dart';

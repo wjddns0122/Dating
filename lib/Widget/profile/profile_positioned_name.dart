@@ -1,8 +1,10 @@
-import 'package:dating/style/text_styling.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/model/user.dart';
+
 class ProfilePositionedName extends StatelessWidget {
-  const ProfilePositionedName({super.key});
+  final User user;
+  const ProfilePositionedName({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,14 @@ class ProfilePositionedName extends StatelessWidget {
       left: 20,
       child: TextButton(
         onPressed: () {},
-        child: TextStyling.profileName,
+        child: Text(
+          '${user.name}',
+          style: const TextStyle(
+            fontSize: 40,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }

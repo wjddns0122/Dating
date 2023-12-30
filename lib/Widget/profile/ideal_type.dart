@@ -1,4 +1,5 @@
 import 'package:dating/Widget/profile/hobby_container.dart';
+import 'package:dating/style/constant.dart';
 import 'package:flutter/material.dart';
 
 class IdealType extends StatelessWidget {
@@ -24,15 +25,15 @@ class IdealType extends StatelessWidget {
             children: [
               HobbyContainer(
                 text: '예쁜',
-                color: Colors.grey,
+                color: inputColor,
               ),
               HobbyContainer(
                 text: '귀여운',
-                color: Colors.grey,
+                color: inputColor,
               ),
               HobbyContainer(
                 text: '섹시한',
-                color: Colors.grey,
+                color: inputColor,
               ),
             ],
           ),

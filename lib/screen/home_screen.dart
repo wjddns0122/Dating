@@ -1,9 +1,9 @@
-import 'package:dating/screen/chatting_list_screen.dart';
-import 'package:dating/screen/feed_screen.dart';
-import 'package:dating/screen/main_screen.dart';
+import 'package:dating/screen/chat/chatting_screen.dart';
+import 'package:dating/screen/feed/feed_screen.dart';
+import 'package:dating/screen/main/main_screen.dart';
 import 'package:dating/style/constant.dart';
-import 'package:dating/screen/meeting_screen.dart';
-import 'package:dating/screen/profile_screen.dart';
+import 'package:dating/screen/meet/meeting_screen.dart';
+import 'package:dating/screen/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,10 +17,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int _pageIdx = 0;
 
   final List<Widget> _widgetOptions = <Widget>[
-    MainScreen(),
+    const MainScreen(),
     const MeetingScreen(),
     const FeedScreen(),
-    const ChattingListScreen(),
+    const ChattingScreen(),
     ProfileScreen(),
   ];
 

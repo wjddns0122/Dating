@@ -1,4 +1,5 @@
 import 'package:dating/Widget/profile/hobby_container.dart';
+import 'package:dating/style/constant.dart';
 import 'package:flutter/material.dart';
 
 class Interest extends StatelessWidget {
@@ -24,15 +25,15 @@ class Interest extends StatelessWidget {
             children: [
               HobbyContainer(
                 text: '게임',
-                color: Colors.grey,
+                color: inputColor,
               ),
               HobbyContainer(
                 text: 'IT',
-                color: Colors.grey,
+                color: inputColor,
               ),
               HobbyContainer(
                 text: '운동',
-                color: Colors.grey,
+                color: inputColor,
               ),
             ],
           ),

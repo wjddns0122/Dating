@@ -4,7 +4,7 @@ class ContainerStandard extends StatelessWidget {
   final double w;
   final double h;
   final double c;
-  final dynamic? child;
+  final dynamic child;
   final Color? color;
   const ContainerStandard({
     super.key,

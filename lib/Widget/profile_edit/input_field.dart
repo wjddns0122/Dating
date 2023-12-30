@@ -1,3 +1,4 @@
+import 'package:dating/style/constant.dart';
 import 'package:flutter/material.dart';
 
 class InputField extends StatelessWidget {
@@ -14,6 +15,9 @@ class InputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,10 +29,10 @@ class InputField extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 17.0),
           child: Container(
-            width: MediaQuery.of(context).size.width * widthPoint,
-            height: MediaQuery.of(context).size.height * heightPoint,
+            width: width * widthPoint,
+            height: height * heightPoint,
             decoration: BoxDecoration(
-              color: Colors.grey,
+              color: inputColor,
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Center(
@@ -42,11 +46,12 @@ class InputField extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                   decoration: InputDecoration(
-                      counterText: "",
-                      hintText: text2,
-                      // border: OutlineInputBorder(),
-                      border: InputBorder.none,
-                      isDense: true),
+                    counterText: "",
+                    hintText: text2,
+                    // border: OutlineInputBorder(),
+                    border: InputBorder.none,
+                    isDense: true,
+                  ),
                 ),
               ),
             ),
