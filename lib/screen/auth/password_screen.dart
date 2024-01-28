@@ -3,9 +3,8 @@ import 'package:dating/style/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PasswordScreen extends StatelessWidget {
-  final AuthController authController = Get.put(AuthController());
-  PasswordScreen({super.key});
+class PasswordScreen extends GetView<AuthController> {
+  const PasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +60,7 @@ class PasswordScreen extends StatelessWidget {
                     hintStyle: TextStyle(color: Colors.grey),
                   ),
                   onChanged: (value) {
-                    authController.user.update((user) {
+                    controller.user.update((user) {
                       user!.password = value;
                     });
                   },
@@ -78,17 +77,17 @@ class PasswordScreen extends StatelessWidget {
           shadowColor: Colors.white,
           elevation: 0,
           child: GestureDetector(
-            onTap: authController.isLoading.value
+            onTap: controller.isLoading.value
                 ? null
                 : () async {
-                    await authController.signUp();
+                    await controller.signUp();
                   },
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.07,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30), color: fontColor),
-              child: authController.isLoading.value
+              child: controller.isLoading.value
                   ? const CircularProgressIndicator()
                   : const Center(
                       child: Text(

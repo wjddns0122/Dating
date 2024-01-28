@@ -1,43 +1,33 @@
-import 'package:dating/model/auth.dart';
+import 'package:dating/data/model/auth.dart';
+import 'package:dating/data/provider/auth_service.dart';
 import 'package:dating/screen/auth/login_screen.dart';
-import 'package:dating/screen/home_screen.dart';
+import 'package:dating/utils/api_urls.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {
   final Rx<Auth> user = Auth(email: '', password: '').obs;
   final RxBool isLoading = false.obs;
+  final AuthService service;
+  final storage = const FlutterSecureStorage();
+  late String email;
+  late String password;
 
-  Future<void> login() async {
-    try {
-      isLoading(true);
-      final response = await http.post(
-        Uri.parse(
-            'http://ec2-43-202-97-23.ap-northeast-2.compute.amazonaws.com:8080/member/login'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(user.value),
-      );
+  AuthController({required this.service});
 
-      if (response.statusCode == 200) {
-        Get.to(const HomeScreen());
-      } else {
-        Get.snackbar('계정을 로그인 하는데 실패했습니다!', '다시 한번 입력하세요!');
-      }
-    } finally {
-      isLoading(false);
-    }
+  void login() {
+    final data = {"email": email, "password": password};
+    service.login(data);
   }
 
   Future<void> signUp() async {
     try {
       isLoading(true);
       final response = await http.post(
-        Uri.parse(
-            'http://ec2-43-202-97-23.ap-northeast-2.compute.amazonaws.com:8080/member/join'),
+        Uri.parse(ApiUrl.login),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -56,12 +46,19 @@ class AuthController extends GetxController {
 
   Future<void> logOut() async {
     try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.remove('userToken');
+      await storage.delete(key: "token");
       user.value = Auth(email: '', password: '');
-      Get.offAll(LoginScreen());
+      Get.offAll(const LoginScreen());
     } catch (e) {
       Get.snackbar('로그아웃에 실패하였습니다!', '잠시후 다시 시도해주세요');
     }
+  }
+
+  void changeEmail(String value) {
+    email = value;
+  }
+
+  void changePassword(String value) {
+    password = value;
   }
 }

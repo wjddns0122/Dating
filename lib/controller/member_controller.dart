@@ -43,8 +43,7 @@ class MemberController extends GetxController {
   final RxList<RandomMember> randomMemberList = <RandomMember>[].obs;
 
   Future<void> fetchSendHeartList() async {
-    final response = await http.get(Uri.parse(
-        'http://ec2-43-202-97-23.ap-northeast-2.compute.amazonaws.com:8080'));
+    final response = await http.get(Uri.parse('http://yourservice.url'));
     if (response.statusCode == 200) {
       final List<dynamic> jsonList =
           json.decode(response.body)["sendHeartList"];
@@ -62,8 +61,7 @@ class MemberController extends GetxController {
   }
 
   Future<void> fetchGoodMbtiMemberList() async {
-    final response = await http.get(Uri.parse(
-        'http://ec2-43-202-97-23.ap-northeast-2.compute.amazonaws.com:8080'));
+    final response = await http.get(Uri.parse('http://'));
     if (response.statusCode == 200) {
       final List<dynamic> jsonList = json.decode(response.body)["goodMbtiList"];
       goodMbtiList.assignAll(jsonList
@@ -76,8 +74,7 @@ class MemberController extends GetxController {
   }
 
   Future<void> fetchReciveHeartList() async {
-    final response = await http.get(Uri.parse(
-        'http://ec2-43-202-97-23.ap-northeast-2.compute.amazonaws.com:8080'));
+    final response = await http.get(Uri.parse('http://'));
     if (response.statusCode == 200) {
       final List<dynamic> jsonList =
           json.decode(response.body)["reciveHeartList"];
@@ -91,8 +88,7 @@ class MemberController extends GetxController {
   }
 
   Future<void> fetchRandomMemberList() async {
-    final response = await http.get(Uri.parse(
-        'http://ec2-43-202-97-23.ap-northeast-2.compute.amazonaws.com:8080'));
+    final response = await http.get(Uri.parse('http://'));
     if (response.statusCode == 200) {
       final List<dynamic> jsonList =
           json.decode(response.body)["randomMemberList"];

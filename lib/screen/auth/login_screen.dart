@@ -5,12 +5,8 @@ import 'package:dating/style/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends StatelessWidget {
-  final AuthController authController = Get.put(AuthController());
-  late String email;
-  late String password;
-
-  LoginScreen({super.key});
+class LoginScreen extends GetView<AuthController> {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,18 +50,15 @@ class LoginScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: '이메일을 입력해주세요.',
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      onChanged: (value) {
-                        email = value;
-                      },
-                    ),
+                        decoration: const InputDecoration(
+                          hintText: '이메일을 입력해주세요.',
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onChanged: controller.changeEmail),
                   ),
                 ),
               ),
@@ -97,9 +90,7 @@ class LoginScreen extends StatelessWidget {
                             color: Colors.grey,
                             fontWeight: FontWeight.bold),
                       ),
-                      onChanged: (value) {
-                        password = value;
-                      },
+                      onChanged: controller.changePassword,
                       obscureText: true,
                     ),
                   ),
@@ -110,13 +101,9 @@ class LoginScreen extends StatelessWidget {
               ),
               Obx(() {
                 return GestureDetector(
-                  onTap: authController.isLoading.value
+                  onTap: Get.find<AuthController>().isLoading.value
                       ? null
-                      : () async {
-                          authController.user.value.email = email;
-                          authController.user.value.password = password;
-                          await authController.login();
-                        },
+                      : Get.find<AuthController>().login,
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: MediaQuery.of(context).size.width * 0.16,
@@ -131,7 +118,7 @@ class LoginScreen extends StatelessWidget {
                               offset: const Offset(0, 8))
                         ]),
                     child: Center(
-                      child: authController.isLoading.value
+                      child: Get.find<AuthController>().isLoading.value
                           ? const CircularProgressIndicator()
                           : const Text(
                               '로그인',
@@ -143,7 +130,7 @@ class LoginScreen extends StatelessWidget {
               }),
               TextButton(
                 onPressed: () {
-                  Get.to(const AuthForgotScreen());
+                  Get.to(() => const AuthForgotScreen());
                 },
                 child: const Text(
                   '계정을 잃어버리셨나요?',
@@ -172,7 +159,7 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextButton(
                 onPressed: () {
-                  Get.to(SignUpPage());
+                  Get.to(() => const SignUpPage());
                 },
                 child: const Text(
                   '회원가입',

@@ -103,12 +103,12 @@ class TextStyling {
     textAlign: TextAlign.center,
   );
 
-  static const MaleNumber = Text('0/2',
+  static const maleNumber = Text('0/2',
       style: TextStyle(
           fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
       overflow: TextOverflow.ellipsis);
 
-  static const FemaleNumber = Text('2/2',
+  static const femaleNumber = Text('2/2',
       style: TextStyle(
           fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
       overflow: TextOverflow.ellipsis);

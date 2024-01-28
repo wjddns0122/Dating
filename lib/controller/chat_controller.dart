@@ -1,4 +1,5 @@
-import 'package:dating/model/chat.dart';
+import 'package:dating/data/model/chat.dart';
+import 'package:dating/utils/api_urls.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -12,8 +13,8 @@ class ChatController extends GetxController {
 }
 
 Future<List<ChatMessage>> fetchChatMessages() async {
-  final response = await http.get(Uri.parse(
-      'http://your-server-url/api/chat/messages')); // 석환이형 백엔드 url -> 메시지 패치
+  final response =
+      await http.get(Uri.parse(ApiUrl.messages)); // 석환이형 백엔드 url -> 메시지 패치
 
   if (response.statusCode == 200) {
     Iterable data = json.decode(response.body);
@@ -26,7 +27,7 @@ Future<List<ChatMessage>> fetchChatMessages() async {
 Future<ChatMessage> sendMessage(ChatMessage message) async {
   // 메세지 보내기
   final response = await http.post(
-    Uri.parse('http://your-server-url/api/chat/sendMessage'),
+    Uri.parse(ApiUrl.sendMessages),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },

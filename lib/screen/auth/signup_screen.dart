@@ -4,10 +4,8 @@ import 'package:dating/style/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignUpPage extends StatelessWidget {
-  final AuthController authController = Get.put(AuthController());
-
-  SignUpPage({super.key});
+class SignUpPage extends GetView<AuthController> {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +61,7 @@ class SignUpPage extends StatelessWidget {
                     hintStyle: TextStyle(color: font2Color),
                   ),
                   onChanged: (value) {
-                    authController.user.update((user) {
+                    controller.user.update((user) {
                       user!.email = value;
                     });
                   },
@@ -80,7 +78,7 @@ class SignUpPage extends StatelessWidget {
           elevation: 0,
           child: GestureDetector(
             onTap: () {
-              Get.to(PasswordScreen());
+              Get.to(() => const PasswordScreen());
             },
             child: Container(
               width: MediaQuery.of(context).size.width,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dating/utils/api_urls.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -50,8 +51,7 @@ class ProfileController extends GetxController {
   ).obs;
 
   Future<void> fetchProfile() async {
-    final response = await http.get(Uri.parse(
-        "http://ec2-43-202-97-23.ap-northeast-2.compute.amazonaws.com:8080/member/profile"));
+    final response = await http.get(Uri.parse(ApiUrl.profile));
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = json.decode(response.body);

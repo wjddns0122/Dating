@@ -1,4 +1,5 @@
-import 'package:dating/screen/auth/login_screen.dart';
+import 'package:dating/binding/init_binding.dart';
+import 'package:dating/root.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,8 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: LoginScreen(),
+      theme: ThemeData(scaffoldBackgroundColor: Colors.white),
+      home: const Root(),
       debugShowCheckedModeBanner: false,
+      initialBinding: InitBinding(),
     );
   }
 }

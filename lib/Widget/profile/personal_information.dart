@@ -1,4 +1,5 @@
 import 'package:dating/Widget/profile/hobby_container.dart';
+import 'package:dating/style/constant.dart';
 import 'package:flutter/material.dart';
 
 class PersonalInformation extends StatelessWidget {
@@ -24,15 +25,15 @@ class PersonalInformation extends StatelessWidget {
             children: [
               HobbyContainer(
                 text: '일반대',
-                color: Colors.grey,
+                color: inputColor,
               ),
               HobbyContainer(
                 text: '학생',
-                color: Colors.grey,
+                color: inputColor,
               ),
               HobbyContainer(
                 text: 'ESTP',
-                color: Colors.grey,
+                color: inputColor,
               ),
             ],
           ),
