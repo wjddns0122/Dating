@@ -1,7 +1,7 @@
 import 'package:dating/Widget/icon_header.dart';
 import 'package:dating/Widget/profile/warning_window.dart';
+import 'package:dating/Widget/profile_edit/my_photos.dart';
 import 'package:dating/widget/common_header.dart';
-import 'package:dating/widget/profile_edit/my_photos.dart';
 import 'package:dating/widget/profile/personal_information.dart';
 import 'package:dating/widget/profile/personality.dart';
 import 'package:dating/widget/profile/interest.dart';

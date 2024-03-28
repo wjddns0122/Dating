@@ -1,26 +1,53 @@
+import 'dart:io';
+
+import 'package:dating/Widget/icon_header.dart';
 import 'package:dating/widget/bottom_apply_bar.dart';
 import 'package:dating/widget/common_header.dart';
 import 'package:dating/widget/profile/ideal_type.dart';
 import 'package:dating/widget/profile/interest.dart';
 import 'package:dating/widget/profile/personal_information.dart';
 import 'package:dating/widget/profile/personality.dart';
-import 'package:dating/widget/profile_edit/my_photos.dart';
 import 'package:dating/widget/profile_edit/input_field.dart';
 import 'package:dating/style/icon_shape.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ProfileEditScreen extends StatelessWidget {
+class ProfileEditScreen extends StatefulWidget {
   const ProfileEditScreen({super.key});
+
+  @override
+  State<ProfileEditScreen> createState() => _ProfileEditScreenState();
+}
+
+class _ProfileEditScreenState extends State<ProfileEditScreen> {
+  XFile? file;
+
+  final List<List<int>> _imageIndex = [
+    [0, 1, 2],
+    [3, 4, 5],
+  ];
+
+  Future<void> _pickImage() async {
+    ImagePicker().pickImage(source: ImageSource.gallery).then(
+      (image) {
+        if (image != null) {
+          setState(() {
+            file = image;
+          });
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      appBar: const CommonHeader(
+      appBar: const IconHeader(
         text: '프로필 수정',
-        actions: [IconShape.iconSettings],
       ),
       body: SingleChildScrollView(
         child: Stack(
@@ -29,32 +56,41 @@ class ProfileEditScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // my 6 photos
-                const Padding(
-                  padding: EdgeInsets.all(2.0),
+                /// 내 프로필 사진 업로드(6장 제한)
+                Padding(
+                  padding: const EdgeInsets.all(2.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          MyPhotos(),
-                          MyPhotos(),
-                          MyPhotos(),
-                        ],
+                    children: List.generate(
+                      _imageIndex.length,
+                      (index) => Row(
+                        children:
+                            List.generate(_imageIndex[index].length, (jndex) {
+                          return Expanded(
+                            child: AspectRatio(
+                              aspectRatio: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.all(1.0),
+                                child: Container(
+                                  color: Colors.grey,
+                                  child: (file != null)
+                                      ? Image.file(
+                                          File(file!.path),
+                                          fit: BoxFit.cover,
+                                        )
+                                      : IconShape.iconNoImage,
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
                       ),
-                      Row(
-                        children: [
-                          MyPhotos(),
-                          MyPhotos(),
-                          MyPhotos(),
-                        ],
-                      ),
-                    ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
 
-                // enter nickname
+                /// 닉네임 입력
                 const InputField(
                   text1: '닉네임',
                   text2: '압둘라 3세',
@@ -63,7 +99,7 @@ class ProfileEditScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 7),
 
-                // enter one line introduction
+                /// 한 줄 소개
                 const InputField(
                   text1: '한줄 소개',
                   text2: '소개 입력',
@@ -72,7 +108,7 @@ class ProfileEditScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 7),
 
-                // select gender
+                /// 성별 선택
                 const InputField(
                   text1: '성별',
                   text2: '여자',
@@ -81,7 +117,7 @@ class ProfileEditScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 7),
 
-                // enter address
+                /// 사는 곳 입력
                 const InputField(
                   text1: '주소',
                   text2: '주소 입력',
@@ -93,7 +129,7 @@ class ProfileEditScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // enter age
+                    /// 나이 입력
                     Expanded(
                       child: InputField(
                         text1: '나이',
@@ -103,7 +139,7 @@ class ProfileEditScreen extends StatelessWidget {
                       ),
                     ),
 
-                    // enter height
+                    /// 키 입력
                     Expanded(
                       child: InputField(
                         text1: '키',
@@ -116,7 +152,7 @@ class ProfileEditScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                // division line
+                /// 나누는 선
                 Container(
                   width: width,
                   height: height * 0.002,

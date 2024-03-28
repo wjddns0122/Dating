@@ -1,4 +1,4 @@
-import 'package:dating/widget/profile/hobby_container.dart';
+import 'package:dating/Widget/profile/hobby_container.dart';
 import 'package:dating/style/constant.dart';
 import 'package:flutter/material.dart';
 

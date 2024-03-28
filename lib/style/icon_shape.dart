@@ -44,4 +44,7 @@ class IconShape {
 
   static Icon get iconFavorite =>
       const Icon(Icons.favorite, color: Colors.white, size: 25);
+
+  static Icon get iconNoImage =>
+      const Icon(Icons.image_not_supported, color: Colors.white);
 }
